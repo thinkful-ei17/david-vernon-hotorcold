@@ -2,7 +2,8 @@ import React from 'react';
 
 export default function Game(props) {
   const getInput = function(event) {
-    console.log(this.textInput.value());
+
+    console.log();
   }
   const onSubmit = function(event) {
     console.log('anything');
@@ -15,23 +16,14 @@ export default function Game(props) {
 
   return (
     <div className='game'>
+
       <div className='hotOrCold'>
-        <p>test</p>
+        <p>{props.info}</p>
       </div>
-      <form className="card add-form" onSubmit={(e) => onSubmit(e)}>
-          <input
-              type="text"
-              // ref={input => this.textInput = input}
-              // aria-label={label}
-          />
-          <button>Add</button>
-      </form>
-      {/* <button onClick={()=> getInput()}>Guess</button> */}
+      <input onChange={(e)=> props.setParentState( {input: e.target.value})} className='TheInput' type='number' placeholder='put boring text in here'></input>
+      <button onClick={()=> props.changeGuess()}>Guess</button>
       <div className='guessCount'>
         <p>Guess#0</p>
-      </div>
-      <div className='arrayTiles'>
-
       </div>
     </div>
   )
